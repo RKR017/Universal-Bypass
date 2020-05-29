@@ -87,11 +87,10 @@ safelyAssign=target=>{
 },
 finish=()=>{
 	bypassed=true
-	document.documentElement.setAttribute("{{channel.stop_watching}}","")
 },
 countIt=f=>{
 	document.documentElement.setAttribute("{{channel.count_it}}","")
-	setTimeout(f,10)
+	setTimeout(f,0)
 },
 domainBypass=(domain,f)=>{
 	if(bypassed)
@@ -179,7 +178,7 @@ awaitElement=(q,f)=>ensureDomLoaded(()=>{
 			f(e)
 			clearInterval(t)
 		}
-	},10)
+	},0)
 	setInterval(()=>clearInterval(t),30000)
 }),
 crowdPath=p=>{
@@ -236,7 +235,7 @@ crowdContribute=(target,f)=>{
 	if(crowdEnabled&&isGoodLink(target))
 	{
 		document.documentElement.setAttribute("{{channel.crowd_contribute}}",target)
-		setTimeout(f,10)
+		setTimeout(f,0)
 	}
 	else
 	{
@@ -1956,7 +1955,7 @@ ensureDomLoaded(()=>{
 			{
 				if(document.querySelector("img[alt='SafelinkU']"))
 				{
-					window.setInterval=f=>setInterval(f,10)
+					window.setInterval=f=>setInterval(f,0)
 				}
 				crowdPath(location.search.substr(3))
 			}
